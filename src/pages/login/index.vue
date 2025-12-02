@@ -86,8 +86,8 @@ const authStore = useAuthStore();
 const accessStore = useAccessStore();
 
 const loginForm = ref({
-  username: '',
-  password: '',
+  username: 'admin',
+  password: '123456',
   captcha: '',
   uuid: ''
 });
