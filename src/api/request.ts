@@ -7,7 +7,7 @@ const http = new Request();
 
 // Base URL
 // You should configure VITE_API_URL in .env
-http.config.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+http.config.baseURL = import.meta.env.VITE_API_BASE_URL || '';
 
 // Request interceptor
 http.interceptors.request.use((config) => {
@@ -63,10 +63,10 @@ http.interceptors.response.use(
 );
 
 export const requestClient = {
-  get: <T>(url: string, params?: any) => http.get<T>(url, { params }).then(res => res.data as T),
-  post: <T>(url: string, data?: any) => http.post<T>(url, data).then(res => res.data as T),
-  put: <T>(url: string, data?: any) => http.put<T>(url, data).then(res => res.data as T),
-  delete: <T>(url: string, params?: any) => http.delete<T>(url, { params }).then(res => res.data as T),
+  get: <T>(url: string, params?: any) => http.get<T>(url, { params }).then(res => res as unknown as T),
+  post: <T>(url: string, data?: any) => http.post<T>(url, data).then(res => res as unknown as T),
+  put: <T>(url: string, data?: any) => http.put<T>(url, data).then(res => res as unknown as T),
+  delete: <T>(url: string, params?: any) => http.delete<T>(url, { params }).then(res => res as unknown as T),
 };
 
 export const miniRequestClient = requestClient;

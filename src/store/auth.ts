@@ -33,7 +33,7 @@ export const useAuthStore = defineStore('auth', () => {
         accessStore.setAccessCodes(accessCodes);
 
         uni.showToast({
-          title: 'Login Success',
+          title: '登录成功',
           icon: 'success'
         });
 
@@ -44,7 +44,9 @@ export const useAuthStore = defineStore('auth', () => {
         }
       }
     } catch (error) {
-      console.error(error);
+      console.error('Login error:', error);
+      // Re-throw error so login page can handle it (e.g., refresh captcha)
+      throw error;
     } finally {
       loginLoading.value = false;
     }
