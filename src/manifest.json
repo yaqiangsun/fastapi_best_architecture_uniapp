@@ -30,7 +30,7 @@
     "quickapp": {},
     "mp-weixin": {
         "appid": "",
-        "libVersion": "2.33.0",
+        "libVersion": "3.5.8",
         "setting": {
             "urlCheck": false
         },
