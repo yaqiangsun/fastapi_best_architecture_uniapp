@@ -30,10 +30,15 @@
     "quickapp": {},
     "mp-weixin": {
         "appid": "",
+        "libVersion": "2.33.0",
         "setting": {
             "urlCheck": false
         },
-        "usingComponents": true
+        "usingComponents": true,
+        "launchOptions": {
+            "query": "",
+            "scene": 1001
+        }
     },
     "mp-alipay": {
         "usingComponents": true
