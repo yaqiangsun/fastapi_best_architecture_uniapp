@@ -1,6 +1,6 @@
 # FastAPI Best Architecture - Mobile App (Uni-App)
 
-This is the mobile application built with uni-app (Vue 3 + TypeScript) for the FastAPI Best Architecture project.
+This is the mobile application built with uni-app (Vue 3 + TypeScript) for the [FastAPI Best Architecture project](https://github.com/yaqiangsun/fastapi_best_architecture).
 
 ## Features
 
