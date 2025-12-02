@@ -117,6 +117,11 @@ npm run build:h5
 npm run build:mp-weixin
 ```
 
+
+## Screenshots
+
+![Index Page](images/index_page.png)
+
 ## Pages & Features
 
 ### 🔐 Login Page
