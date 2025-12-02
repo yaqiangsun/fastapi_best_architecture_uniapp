@@ -120,7 +120,7 @@ npm run build:mp-weixin
 
 ## Screenshots
 
-![Index Page](images/index_page.png)
+<img src="images/index_page.png" width="50%" />
 
 ## Pages & Features
 
