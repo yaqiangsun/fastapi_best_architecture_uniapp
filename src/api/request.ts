@@ -14,7 +14,8 @@ const isMP = uni.getSystemInfoSync().platform !== 'devtools' && (
   uni.getSystemInfoSync().platform.includes('mp') ||
   typeof window === 'undefined' // In Mini Programs, window is undefined
 );
-http.config.baseURL = isMP ? baseURL.replace(/\/$/, '') : baseURL;
+// 修复微信小程序环境下URL重复的问题
+http.config.baseURL = isMP ? baseURL.replace(/\/api$/, '') : baseURL;
 
 // Request interceptor
 http.interceptors.request.use((config) => {
