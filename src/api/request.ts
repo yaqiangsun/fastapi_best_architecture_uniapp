@@ -7,7 +7,14 @@ const http = new Request();
 
 // Base URL
 // You should configure VITE_API_URL in .env
-http.config.baseURL = import.meta.env.VITE_API_BASE_URL || '';
+// Fix for different platform baseURL handling
+const baseURL = import.meta.env.VITE_API_BASE_URL || '';
+// For MP platforms, we should not add extra /api prefix since the API endpoints already include it
+const isMP = uni.getSystemInfoSync().platform !== 'devtools' && (
+  uni.getSystemInfoSync().platform.includes('mp') ||
+  typeof window === 'undefined' // In Mini Programs, window is undefined
+);
+http.config.baseURL = isMP ? baseURL.replace(/\/$/, '') : baseURL;
 
 // Request interceptor
 http.interceptors.request.use((config) => {
