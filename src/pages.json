@@ -51,10 +51,11 @@
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar": {
-		"color": "#7A7E83",
-		"selectedColor": "#3cc51f",
-		"borderStyle": "black",
+		"color": "#9ca3af",
+		"selectedColor": "#667eea",
+		"borderStyle": "white",
 		"backgroundColor": "#ffffff",
+		"custom": true,
 		"list": [
 			{
 				"pagePath": "pages/index/index",

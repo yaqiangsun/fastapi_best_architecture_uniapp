@@ -37,6 +37,7 @@
         Logout
       </button>
     </view>
+    <custom-tab-bar />
   </view>
 </template>
 
@@ -45,6 +46,7 @@ import { ref, onMounted } from 'vue';
 import { useUserStore } from '@/store/user';
 import { useAuthStore } from '@/store/auth';
 import { useAccessStore } from '@/store/access';
+import CustomTabBar from '@/components/CustomTabBar.vue';
 
 const userStore = useUserStore();
 const authStore = useAuthStore();
@@ -86,6 +88,7 @@ onMounted(async () => {
 .container {
   min-height: 100vh;
   background: $uni-bg-color-grey;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
 }
 
 .profile-header {

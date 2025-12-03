@@ -34,11 +34,7 @@
         "setting": {
             "urlCheck": false
         },
-        "usingComponents": true,
-        "launchOptions": {
-            "query": "",
-            "scene": 1001
-        }
+        "usingComponents": true
     },
     "mp-alipay": {
         "usingComponents": true

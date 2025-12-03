@@ -27,6 +27,7 @@
         </view>
       </view>
     </view>
+    <custom-tab-bar />
   </view>
 </template>
 
@@ -35,6 +36,7 @@ import { ref, onMounted } from 'vue';
 import { useUserStore } from '@/store/user';
 import { useAccessStore } from '@/store/access';
 import { useAuthStore } from '@/store/auth';
+import CustomTabBar from '@/components/CustomTabBar.vue';
 
 const userStore = useUserStore();
 const accessStore = useAccessStore();
@@ -70,6 +72,7 @@ onMounted(async () => {
 .container {
   min-height: 100vh;
   background: $uni-bg-color-grey;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
 }
 
 .header {
