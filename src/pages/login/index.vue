@@ -1,6 +1,6 @@
 <template>
   <view class="login-container">
-    <view class="login-box">
+    <view class="login-box" :class="{ 'keyboard-open': isFocused }">
       <view class="logo-section">
         <text class="app-title">FastAPI Admin</text>
         <text class="app-subtitle">Mobile Application</text>
@@ -14,6 +14,10 @@
             type="text" 
             placeholder="Username"
             :disabled="authStore.loginLoading"
+            :adjust-position="false"
+            @click="handleFocus"
+            @focus="handleFocus"
+            @blur="handleBlur"
           />
         </view>
         
@@ -24,6 +28,10 @@
             type="password" 
             placeholder="Password"
             :disabled="authStore.loginLoading"
+            :adjust-position="false"
+            @click="handleFocus"
+            @focus="handleFocus"
+            @blur="handleBlur"
           />
         </view>
         
@@ -34,6 +42,10 @@
             type="text" 
             placeholder="验证码"
             :disabled="authStore.loginLoading"
+            :adjust-position="false"
+            @click="handleFocus"
+            @focus="handleFocus"
+            @blur="handleBlur"
           />
           <view class="captcha-container" @click="handleCaptchaClick">
             <!-- Loading state -->
@@ -95,7 +107,16 @@ const loginForm = ref({
 const captchaImage = ref('');
 const captchaError = ref(false);
 const captchaLoading = ref(false);
+const isFocused = ref(false);
 let refreshDebounceTimer: number | null = null;
+
+const handleFocus = () => {
+  isFocused.value = true;
+};
+
+const handleBlur = () => {
+  isFocused.value = false;
+};
 
 // Debounced captcha refresh to prevent rapid clicking
 const handleCaptchaClick = () => {
@@ -181,6 +202,12 @@ onMounted(() => {
   border-radius: 20rpx;
   padding: 60rpx 40rpx;
   box-shadow: 0 10rpx 40rpx rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  
+  &.keyboard-open {
+    transform: translateY(-150rpx);
+    transition: transform 0.25s ease-out;
+  }
 }
 
 .logo-section {
