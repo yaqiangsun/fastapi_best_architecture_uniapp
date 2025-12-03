@@ -93,65 +93,94 @@ onMounted(() => {
 <style lang="scss" scoped>
 .container {
   min-height: 100vh;
-  background: #f5f5f5;
-  padding: 20rpx;
+  background: $uni-bg-color-grey;
+  padding: 30rpx;
 }
 
 .header {
   display: flex;
   gap: 20rpx;
   margin-bottom: 30rpx;
-  padding: 20rpx;
-  background: white;
-  border-radius: 12rpx;
+  padding: 30rpx;
+  background: $uni-bg-color;
+  border-radius: $uni-border-radius-lg;
+  box-shadow: $uni-shadow-sm;
+  animation: fadeIn 0.6s ease-out;
 }
 
 .search-input {
   flex: 1;
-  height: 70rpx;
-  padding: 0 20rpx;
-  border: 2rpx solid #e0e0e0;
-  border-radius: 8rpx;
+  height: 80rpx;
+  padding: 0 30rpx;
+  border: 2rpx solid transparent;
+  background: $uni-bg-color-hover;
+  border-radius: $uni-border-radius-base;
   font-size: 28rpx;
+  transition: all 0.3s ease;
+  
+  &:focus {
+    background: $uni-bg-color;
+    border-color: $uni-color-primary;
+    box-shadow: 0 0 0 4rpx rgba(102, 126, 234, 0.1);
+  }
 }
 
 .search-btn {
-  height: 70rpx;
+  height: 80rpx;
   padding: 0 40rpx;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border-radius: 8rpx;
+  background: $uni-color-primary-gradient;
+  color: $uni-text-color-inverse;
+  border-radius: $uni-border-radius-base;
   font-size: 28rpx;
+  font-weight: 600;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  
+  &:active {
+    transform: scale(0.96);
+    opacity: 0.9;
+  }
 }
 
 .user-list {
   display: flex;
   flex-direction: column;
-  gap: 20rpx;
+  gap: 24rpx;
 }
 
 .user-card {
-  background: white;
-  border-radius: 16rpx;
+  background: $uni-bg-color;
+  border-radius: $uni-border-radius-lg;
   padding: 30rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  box-shadow: $uni-shadow-sm;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+  animation: slideUp 0.5s ease-out backwards;
+  
+  &:active {
+    transform: scale(0.98);
+    box-shadow: none;
+  }
 }
 
 .user-info {
   display: flex;
   align-items: center;
-  gap: 20rpx;
+  gap: 24rpx;
   flex: 1;
 }
 
 .user-avatar {
   width: 100rpx;
   height: 100rpx;
-  border-radius: 50rpx;
+  border-radius: 50%;
+  border: 4rpx solid $uni-bg-color-hover;
 }
 
 .user-details {
@@ -163,17 +192,21 @@ onMounted(() => {
 .user-nickname {
   font-size: 32rpx;
   font-weight: 600;
-  color: #333;
+  color: $uni-text-color;
 }
 
 .user-username {
   font-size: 26rpx;
-  color: #666;
+  color: $uni-text-color-grey;
 }
 
 .user-dept {
   font-size: 24rpx;
-  color: #999;
+  color: $uni-text-color-placeholder;
+  background: $uni-bg-color-hover;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+  align-self: flex-start;
 }
 
 .user-status {
@@ -182,26 +215,28 @@ onMounted(() => {
 }
 
 .status-badge {
-  padding: 10rpx 20rpx;
-  border-radius: 20rpx;
+  padding: 8rpx 20rpx;
+  border-radius: 30rpx;
   font-size: 24rpx;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 1rpx;
   
   &.active {
-    background: #e8f5e9;
-    color: #4caf50;
+    background: #ecfdf5;
+    color: $uni-color-success;
   }
   
   &.inactive {
-    background: #ffebee;
-    color: #f44336;
+    background: #fef2f2;
+    color: $uni-color-error;
   }
 }
 
 .loading, .empty {
   text-align: center;
   padding: 100rpx 40rpx;
-  color: #999;
+  color: $uni-text-color-placeholder;
   font-size: 28rpx;
+  animation: fadeIn 0.5s ease-out;
 }
 </style>

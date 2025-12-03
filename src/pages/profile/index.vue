@@ -85,54 +85,81 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .container {
   min-height: 100vh;
-  background: #f5f5f5;
+  background: $uni-bg-color-grey;
 }
 
 .profile-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 80rpx 40rpx 60rpx;
+  background: $uni-color-primary-gradient;
+  padding: 80rpx 40rpx 100rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
+  color: $uni-text-color-inverse;
+  border-bottom-left-radius: 60rpx;
+  border-bottom-right-radius: 60rpx;
+  box-shadow: $uni-shadow-lg;
+  position: relative;
+  z-index: 0;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -20rpx;
+    left: 0;
+    right: 0;
+    height: 40rpx;
+    background: rgba(255, 255, 255, 0.1);
+    filter: blur(20rpx);
+    z-index: -1;
+  }
 }
 
 .avatar {
-  width: 160rpx;
-  height: 160rpx;
-  border-radius: 80rpx;
-  border: 4rpx solid white;
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50%;
+  border: 8rpx solid rgba(255, 255, 255, 0.3);
   margin-bottom: 30rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .username {
-  font-size: 40rpx;
-  font-weight: bold;
-  margin-bottom: 10rpx;
+  font-size: 44rpx;
+  font-weight: 700;
+  margin-bottom: 12rpx;
+  animation: slideUp 0.6s ease-out 0.2s backwards;
 }
 
 .email {
-  font-size: 24rpx;
+  font-size: 28rpx;
   opacity: 0.9;
+  font-weight: 400;
+  animation: slideUp 0.6s ease-out 0.3s backwards;
 }
 
 .profile-content {
-  padding: 40rpx;
+  padding: 0 40rpx;
+  margin-top: -60rpx;
+  position: relative;
+  z-index: 1;
 }
 
 .info-section {
-  background: white;
-  border-radius: 20rpx;
-  padding: 40rpx;
+  background: $uni-bg-color;
+  border-radius: $uni-border-radius-lg;
+  padding: 10rpx 40rpx;
   margin-bottom: 40rpx;
+  box-shadow: $uni-shadow-base;
+  animation: slideUp 0.6s ease-out 0.4s backwards;
 }
 
 .info-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30rpx 0;
-  border-bottom: 2rpx solid #f0f0f0;
+  padding: 36rpx 0;
+  border-bottom: 1px solid #f3f4f6;
   
   &:last-child {
     border-bottom: none;
@@ -141,23 +168,34 @@ onMounted(async () => {
 
 .info-label {
   font-size: 28rpx;
-  color: #666;
+  color: $uni-text-color-grey;
   font-weight: 500;
 }
 
 .info-value {
-  font-size: 28rpx;
-  color: #333;
+  font-size: 30rpx;
+  color: $uni-text-color;
+  font-weight: 600;
 }
 
 .logout-button {
   width: 100%;
-  height: 88rpx;
-  background: #ff4d4f;
-  color: white;
+  height: 96rpx;
+  background: #fee2e2;
+  color: $uni-color-error;
   font-size: 32rpx;
-  font-weight: bold;
-  border-radius: 12rpx;
+  font-weight: 600;
+  border-radius: $uni-border-radius-lg;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  animation: slideUp 0.6s ease-out 0.5s backwards;
+  
+  &:active {
+    background: #fecaca;
+    transform: scale(0.98);
+  }
 }
 </style>

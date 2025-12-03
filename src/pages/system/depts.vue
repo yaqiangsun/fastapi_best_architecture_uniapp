@@ -68,48 +68,65 @@ onMounted(() => {
 <style lang="scss" scoped>
 .container {
   min-height: 100vh;
-  background: #f5f5f5;
-  padding: 20rpx;
+  background: $uni-bg-color-grey;
+  padding: 30rpx;
 }
 
 .header {
-  padding: 30rpx 20rpx;
-  background: white;
-  border-radius: 12rpx;
+  padding: 30rpx;
+  background: $uni-bg-color;
+  border-radius: $uni-border-radius-lg;
   margin-bottom: 30rpx;
+  box-shadow: $uni-shadow-sm;
+  animation: fadeIn 0.6s ease-out;
 }
 
 .title {
   font-size: 36rpx;
-  font-weight: 600;
-  color: #333;
+  font-weight: 700;
+  color: $uni-text-color;
 }
 
 .dept-tree {
   display: flex;
   flex-direction: column;
-  gap: 20rpx;
+  gap: 24rpx;
 }
 
 .dept-card {
-  background: white;
-  border-radius: 16rpx;
-  padding: 30rpx;
+  background: $uni-bg-color;
+  border-radius: $uni-border-radius-lg;
+  padding: 36rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  box-shadow: $uni-shadow-sm;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+  animation: slideUp 0.5s ease-out backwards;
+  
+  &:active {
+    transform: scale(0.98);
+    box-shadow: none;
+  }
 }
 
 .dept-info {
   display: flex;
   align-items: center;
-  gap: 20rpx;
+  gap: 24rpx;
   flex: 1;
 }
 
 .dept-icon {
-  font-size: 60rpx;
+  font-size: 64rpx;
+  background: $uni-bg-color-hover;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: $uni-border-radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dept-details {
@@ -121,40 +138,42 @@ onMounted(() => {
 .dept-name {
   font-size: 32rpx;
   font-weight: 600;
-  color: #333;
+  color: $uni-text-color;
 }
 
 .dept-leader {
   font-size: 26rpx;
-  color: #666;
+  color: $uni-text-color-grey;
 }
 
 .dept-phone {
   font-size: 24rpx;
-  color: #999;
+  color: $uni-text-color-placeholder;
 }
 
 .dept-status {
-  padding: 10rpx 20rpx;
-  border-radius: 20rpx;
+  padding: 8rpx 20rpx;
+  border-radius: 30rpx;
   font-size: 24rpx;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 1rpx;
   
   &.active {
-    background: #e8f5e9;
-    color: #4caf50;
+    background: #ecfdf5;
+    color: $uni-color-success;
   }
   
   &.inactive {
-    background: #ffebee;
-    color: #f44336;
+    background: #fef2f2;
+    color: $uni-color-error;
   }
 }
 
 .loading, .empty {
   text-align: center;
   padding: 100rpx 40rpx;
-  color: #999;
+  color: $uni-text-color-placeholder;
   font-size: 28rpx;
+  animation: fadeIn 0.5s ease-out;
 }
 </style>

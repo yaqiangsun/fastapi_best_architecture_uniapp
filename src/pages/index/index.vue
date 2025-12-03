@@ -69,22 +69,51 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .container {
   min-height: 100vh;
-  background: #f5f5f5;
+  background: $uni-bg-color-grey;
 }
 
 .header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 60rpx 40rpx 40rpx;
-  color: white;
+  background: $uni-color-primary-gradient;
+  padding: 60rpx 40rpx 80rpx;
+  color: $uni-text-color-inverse;
+  border-bottom-left-radius: 40rpx;
+  border-bottom-right-radius: 40rpx;
+  box-shadow: $uni-shadow-lg;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400rpx;
+    height: 400rpx;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite;
+  }
 }
 
 .welcome-text {
-  font-size: 36rpx;
-  font-weight: bold;
+  font-size: 48rpx;
+  font-weight: 800;
+  display: block;
+  margin-bottom: 10rpx;
+  animation: slideUp 0.6s ease-out;
+}
+
+.subtitle-text {
+  font-size: 28rpx;
+  opacity: 0.9;
+  animation: slideUp 0.6s ease-out 0.1s backwards;
 }
 
 .content {
-  padding: 40rpx;
+  padding: 0 40rpx;
+  margin-top: -60rpx;
+  position: relative;
+  z-index: 1;
 }
 
 .card-grid {
@@ -94,29 +123,44 @@ onMounted(async () => {
 }
 
 .card {
-  background: white;
-  border-radius: 20rpx;
-  padding: 60rpx 40rpx;
+  background: $uni-bg-color;
+  border-radius: $uni-border-radius-lg;
+  padding: 50rpx 30rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s;
+  box-shadow: $uni-shadow-base;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  
+  // Staggered animation for cards
+  animation: scaleIn 0.5s ease-out backwards;
+  
+  &:nth-child(1) { animation-delay: 0.2s; }
+  &:nth-child(2) { animation-delay: 0.3s; }
+  &:nth-child(3) { animation-delay: 0.4s; }
+  &:nth-child(4) { animation-delay: 0.5s; }
   
   &:active {
-    transform: scale(0.95);
+    transform: scale(0.96);
+    box-shadow: $uni-shadow-sm;
   }
 }
 
 .card-icon {
-  font-size: 80rpx;
-  margin-bottom: 20rpx;
+  font-size: 72rpx;
+  margin-bottom: 24rpx;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-icon {
+  transform: scale(1.1);
 }
 
 .card-title {
-  font-size: 28rpx;
-  font-weight: 500;
-  color: #333;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: $uni-text-color;
 }
 </style>

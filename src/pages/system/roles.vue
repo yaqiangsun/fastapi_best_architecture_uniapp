@@ -130,84 +130,107 @@ onMounted(() => {
 <style lang="scss" scoped>
 .container {
   min-height: 100vh;
-  background: #f5f5f5;
-  padding: 20rpx;
+  background: $uni-bg-color-grey;
+  padding: 30rpx;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30rpx 20rpx;
-  background: white;
-  border-radius: 12rpx;
+  padding: 30rpx;
+  background: $uni-bg-color;
+  border-radius: $uni-border-radius-lg;
   margin-bottom: 30rpx;
+  box-shadow: $uni-shadow-sm;
+  animation: fadeIn 0.6s ease-out;
 }
 
 .title {
   font-size: 36rpx;
-  font-weight: 600;
-  color: #333;
+  font-weight: 700;
+  color: $uni-text-color;
 }
 
 .add-btn {
-  padding: 15rpx 30rpx;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border-radius: 20rpx;
+  padding: 16rpx 36rpx;
+  background: $uni-color-primary-gradient;
+  color: $uni-text-color-inverse;
+  border-radius: $uni-border-radius-base;
   font-size: 28rpx;
+  font-weight: 600;
   border: none;
+  box-shadow: 0 4rpx 12rpx rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+  
+  &:active {
+    transform: scale(0.96);
+    box-shadow: 0 2rpx 6rpx rgba(102, 126, 234, 0.2);
+  }
 }
 
 .role-list {
   display: flex;
   flex-direction: column;
-  gap: 20rpx;
+  gap: 24rpx;
 }
 
 .role-card {
-  background: white;
-  border-radius: 16rpx;
-  padding: 30rpx;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  background: $uni-bg-color;
+  border-radius: $uni-border-radius-lg;
+  padding: 36rpx;
+  box-shadow: $uni-shadow-sm;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+  animation: slideUp 0.5s ease-out backwards;
+  
+  &:active {
+    transform: scale(0.98);
+    box-shadow: none;
+  }
 }
 
 .role-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15rpx;
+  margin-bottom: 20rpx;
 }
 
 .role-name {
-  font-size: 32rpx;
-  font-weight: 600;
-  color: #333;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: $uni-text-color;
 }
 
 .role-status {
   padding: 8rpx 20rpx;
-  border-radius: 16rpx;
+  border-radius: 30rpx;
   font-size: 24rpx;
+  font-weight: 600;
+  letter-spacing: 1rpx;
   
   &.active {
-    background: #e8f5e9;
-    color: #4caf50;
+    background: #ecfdf5;
+    color: $uni-color-success;
   }
   
   &.inactive {
-    background: #ffebee;
-    color: #f44336;
+    background: #fef2f2;
+    color: $uni-color-error;
   }
 }
 
 .role-remark {
-  margin-bottom: 20rpx;
+  margin-bottom: 24rpx;
+  padding: 16rpx;
+  background: $uni-bg-color-grey;
+  border-radius: $uni-border-radius-sm;
   
   text {
     font-size: 26rpx;
-    color: #666;
-    line-height: 1.5;
+    color: $uni-text-color-grey;
+    line-height: 1.6;
   }
 }
 
@@ -215,13 +238,13 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 20rpx;
-  border-top: 2rpx solid #f0f0f0;
+  padding-top: 24rpx;
+  border-top: 1px solid $uni-bg-color-hover;
 }
 
 .role-time {
   font-size: 24rpx;
-  color: #999;
+  color: $uni-text-color-placeholder;
 }
 
 .role-actions {
@@ -230,25 +253,36 @@ onMounted(() => {
 }
 
 .action-btn {
-  padding: 10rpx 20rpx;
-  border-radius: 8rpx;
+  padding: 12rpx 24rpx;
+  border-radius: $uni-border-radius-sm;
   font-size: 24rpx;
+  font-weight: 600;
+  transition: all 0.2s ease;
   
   &.edit {
-    background: #e3f2fd;
-    color: #2196f3;
+    background: #eff6ff;
+    color: $uni-color-info;
+    
+    &:active {
+      background: #dbeafe;
+    }
   }
   
   &.delete {
-    background: #ffebee;
-    color: #f44336;
+    background: #fef2f2;
+    color: $uni-color-error;
+    
+    &:active {
+      background: #fee2e2;
+    }
   }
 }
 
 .loading, .empty {
   text-align: center;
   padding: 100rpx 40rpx;
-  color: #999;
+  color: $uni-text-color-placeholder;
   font-size: 28rpx;
+  animation: fadeIn 0.5s ease-out;
 }
 </style>

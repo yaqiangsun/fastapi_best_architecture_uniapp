@@ -193,40 +193,77 @@ onMounted(() => {
   justify-content: center;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 40rpx;
+  position: relative;
+  overflow: hidden;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 600rpx;
+    height: 600rpx;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+  }
+
+  &::before {
+    top: -100rpx;
+    left: -100rpx;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  &::after {
+    bottom: -100rpx;
+    right: -100rpx;
+    animation: float 8s ease-in-out infinite reverse;
+  }
 }
 
 .login-box {
   width: 100%;
   max-width: 600rpx;
-  background: white;
-  border-radius: 20rpx;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 32rpx;
   padding: 60rpx 40rpx;
-  box-shadow: 0 10rpx 40rpx rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 20rpx 60rpx rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  animation: slideUp 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
   
   &.keyboard-open {
     transform: translateY(-150rpx);
-    transition: transform 0.25s ease-out;
   }
 }
 
 .logo-section {
   text-align: center;
   margin-bottom: 60rpx;
+  animation: fadeIn 0.8s ease-out 0.2s backwards;
 }
 
 .app-title {
-  font-size: 48rpx;
-  font-weight: bold;
-  color: #333;
+  font-size: 56rpx;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   display: block;
-  margin-bottom: 10rpx;
+  margin-bottom: 16rpx;
+  letter-spacing: -1rpx;
 }
 
 .app-subtitle {
   font-size: 28rpx;
-  color: #666;
+  color: #888;
   display: block;
+  font-weight: 500;
+  letter-spacing: 1rpx;
+  text-transform: uppercase;
 }
 
 .form-section {
@@ -234,25 +271,30 @@ onMounted(() => {
 }
 
 .input-group {
-  margin-bottom: 30rpx;
+  margin-bottom: 36rpx;
+  animation: fadeIn 0.8s ease-out 0.4s backwards;
 }
 
 .input-field {
   width: 100%;
-  height: 88rpx;
-  padding: 0 30rpx;
-  font-size: 28rpx;
-  border: 2rpx solid #e0e0e0;
-  border-radius: 12rpx;
+  height: 96rpx;
+  padding: 0 36rpx;
+  font-size: 30rpx;
+  background: #f5f7fa;
+  border: 2rpx solid transparent;
+  border-radius: 24rpx;
   box-sizing: border-box;
-  transition: border-color 0.3s;
+  transition: all 0.3s ease;
+  color: #333;
   
   &:focus {
+    background: #fff;
     border-color: #667eea;
+    box-shadow: 0 0 0 6rpx rgba(102, 126, 234, 0.1);
   }
   
   &:disabled {
-    background-color: #f5f5f5;
+    background-color: #f0f2f5;
     color: #999;
   }
 }
@@ -260,48 +302,48 @@ onMounted(() => {
 .captcha-group {
   display: flex;
   align-items: center;
-  gap: 20rpx;
-  margin-bottom: 40rpx;
+  gap: 24rpx;
+  margin-bottom: 48rpx;
+  animation: fadeIn 0.8s ease-out 0.5s backwards;
 }
 
 .captcha-input {
   flex: 1;
-  height: 88rpx;
-  padding: 0 30rpx;
-  font-size: 28rpx;
-  border: 2rpx solid #e0e0e0;
-  border-radius: 12rpx;
+  height: 96rpx;
+  padding: 0 36rpx;
+  font-size: 30rpx;
+  background: #f5f7fa;
+  border: 2rpx solid transparent;
+  border-radius: 24rpx;
   box-sizing: border-box;
-  transition: border-color 0.3s;
+  transition: all 0.3s ease;
   
   &:focus {
+    background: #fff;
     border-color: #667eea;
-  }
-  
-  &:disabled {
-    background-color: #f5f5f5;
-    color: #999;
+    box-shadow: 0 0 0 6rpx rgba(102, 126, 234, 0.1);
   }
 }
 
 .captcha-container {
   position: relative;
-  width: 200rpx;
-  height: 88rpx;
-  border-radius: 12rpx;
+  width: 220rpx;
+  height: 96rpx;
+  border-radius: 24rpx;
   overflow: hidden;
   cursor: pointer;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
   
   &:active {
-    opacity: 0.8;
+    transform: scale(0.98);
   }
 }
 
 .captcha-image {
   width: 100%;
   height: 100%;
-  border-radius: 12rpx;
-  border: 2rpx solid #e0e0e0;
+  background: #fff;
 }
 
 .captcha-loading {
@@ -310,9 +352,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f8f9fa;
-  border: 2rpx solid #e0e0e0;
-  border-radius: 12rpx;
+  background-color: #f5f7fa;
 }
 
 .loading-spinner {
@@ -324,32 +364,28 @@ onMounted(() => {
   animation: spin 0.8s linear infinite;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
 .captcha-error {
   width: 100%;
   height: 100%;
-  border-radius: 12rpx;
-  border: 2rpx dashed #ff6b6b;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #fff5f5;
+  border: 2rpx dashed #ff6b6b;
+  border-radius: 24rpx;
+  box-sizing: border-box;
 }
 
 .retry-text {
   color: #ff6b6b;
   font-size: 24rpx;
+  font-weight: 500;
 }
 
 .captcha-placeholder {
   width: 100%;
   height: 100%;
-  border-radius: 12rpx;
-  border: 2rpx solid #e0e0e0;
-  background-color: #f8f9fa;
+  background-color: #f5f7fa;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -362,46 +398,87 @@ onMounted(() => {
 
 .refresh-hint {
   position: absolute;
-  top: 4rpx;
-  right: 4rpx;
-  width: 32rpx;
-  height: 32rpx;
+  top: 8rpx;
+  right: 8rpx;
+  width: 36rpx;
+  height: 36rpx;
   background-color: rgba(102, 126, 234, 0.9);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.7;
-  transition: opacity 0.3s;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
 }
 
 .captcha-container:hover .refresh-hint {
   opacity: 1;
+  transform: scale(1);
 }
 
 .hint-icon {
   color: white;
-  font-size: 24rpx;
+  font-size: 20rpx;
   font-weight: bold;
 }
 
 .login-button {
   width: 100%;
-  height: 88rpx;
+  height: 96rpx;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   font-size: 32rpx;
-  font-weight: bold;
-  border-radius: 12rpx;
+  font-weight: 600;
+  border-radius: 24rpx;
   border: none;
-  transition: opacity 0.3s;
-  
-  &:disabled {
-    opacity: 0.6;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10rpx 20rpx rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.8s ease-out 0.6s backwards;
   
   &:active:not(:disabled) {
-    opacity: 0.9;
+    transform: translateY(2rpx) scale(0.98);
+    box-shadow: 0 5rpx 10rpx rgba(102, 126, 234, 0.2);
   }
+  
+  &:disabled {
+    opacity: 0.7;
+    background: linear-gradient(135deg, #a0a0a0 0%, #c0c0c0 100%);
+    box-shadow: none;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20rpx, -20rpx); }
 }
 </style>

@@ -107,107 +107,145 @@ onMounted(() => {
 <style lang="scss" scoped>
 .container {
   min-height: 100vh;
-  background: #f5f5f5;
-  padding: 20rpx;
+  background: $uni-bg-color-grey;
+  padding: 30rpx;
 }
 
 .filter-bar {
-  background: white;
-  border-radius: 12rpx;
-  padding: 20rpx;
+  background: $uni-bg-color;
+  border-radius: $uni-border-radius-lg;
+  padding: 24rpx;
   margin-bottom: 30rpx;
+  box-shadow: $uni-shadow-sm;
+  animation: fadeIn 0.6s ease-out;
 }
 
 .picker {
-  padding: 20rpx;
-  background: #f5f5f5;
-  border-radius: 8rpx;
+  padding: 24rpx;
+  background: $uni-bg-color-hover;
+  border-radius: $uni-border-radius-base;
+  transition: all 0.3s ease;
+  
+  &:active {
+    background: #e5e7eb;
+  }
   
   text {
     font-size: 28rpx;
-    color: #333;
+    color: $uni-text-color;
+    font-weight: 500;
   }
 }
 
 .log-list {
   display: flex;
   flex-direction: column;
-  gap: 20rpx;
+  gap: 24rpx;
 }
 
 .log-card {
-  background: white;
-  border-radius: 16rpx;
-  padding: 30rpx;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  background: $uni-bg-color;
+  border-radius: $uni-border-radius-lg;
+  padding: 36rpx;
+  box-shadow: $uni-shadow-sm;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+  animation: slideUp 0.5s ease-out backwards;
+  
+  &:active {
+    transform: scale(0.98);
+    box-shadow: none;
+  }
 }
 
 .log-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20rpx;
+  margin-bottom: 24rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid $uni-bg-color-grey;
 }
 
 .log-type {
-  padding: 8rpx 16rpx;
-  border-radius: 12rpx;
+  padding: 8rpx 20rpx;
+  border-radius: 30rpx;
   font-size: 24rpx;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 1rpx;
   
   &.info {
-    background: #e3f2fd;
-    color: #2196f3;
+    background: #eff6ff;
+    color: $uni-color-info;
   }
   
   &.warning {
-    background: #fff3e0;
-    color: #ff9800;
+    background: #fffbeb;
+    color: $uni-color-warning;
   }
   
   &.error {
-    background: #ffebee;
-    color: #f44336;
+    background: #fef2f2;
+    color: $uni-color-error;
   }
   
   &.success {
-    background: #e8f5e9;
-    color: #4caf50;
+    background: #ecfdf5;
+    color: $uni-color-success;
   }
 }
 
 .log-time {
   font-size: 24rpx;
-  color: #999;
+  color: $uni-text-color-placeholder;
+  font-family: monospace;
 }
 
 .log-content {
   display: flex;
   flex-direction: column;
-  gap: 12rpx;
+  gap: 16rpx;
 }
 
 .log-user {
-  font-size: 26rpx;
-  color: #666;
-  font-weight: 500;
+  font-size: 28rpx;
+  color: $uni-text-color;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  
+  &::before {
+    content: '👤';
+    margin-right: 10rpx;
+    font-size: 24rpx;
+  }
 }
 
 .log-message {
   font-size: 28rpx;
-  color: #333;
-  line-height: 1.5;
+  color: $uni-text-color-grey;
+  line-height: 1.6;
 }
 
 .log-ip {
   font-size: 24rpx;
-  color: #999;
+  color: $uni-text-color-placeholder;
+  margin-top: 8rpx;
+  display: flex;
+  align-items: center;
+  
+  &::before {
+    content: '🌐';
+    margin-right: 10rpx;
+    font-size: 20rpx;
+  }
 }
 
 .loading, .empty {
   text-align: center;
   padding: 100rpx 40rpx;
-  color: #999;
+  color: $uni-text-color-placeholder;
   font-size: 28rpx;
+  animation: fadeIn 0.5s ease-out;
 }
 </style>
