@@ -1,5 +1,10 @@
 <template>
   <view class="login-container">
+    <view class="bg-circles">
+      <view class="circle circle-1"></view>
+      <view class="circle circle-2"></view>
+      <view class="circle circle-3"></view>
+    </view>
     <view class="login-box" :class="{ 'keyboard-open': isFocused }">
       <view class="logo-section">
         <text class="app-title">FastAPI Admin</text>
@@ -191,32 +196,54 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(-45deg, #667eea, #764ba2, #6B8DD6, #8E37D7);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
   padding: 40rpx;
   position: relative;
   overflow: hidden;
+}
 
-  &::before, &::after {
-    content: '';
-    position: absolute;
-    width: 600rpx;
-    height: 600rpx;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    z-index: 0;
-  }
+.bg-circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
 
-  &::before {
-    top: -100rpx;
-    left: -100rpx;
-    animation: float 8s ease-in-out infinite;
-  }
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+}
 
-  &::after {
-    bottom: -100rpx;
-    right: -100rpx;
-    animation: float 8s ease-in-out infinite reverse;
-  }
+.circle-1 {
+  width: 300rpx;
+  height: 300rpx;
+  top: -50rpx;
+  left: -50rpx;
+  animation: float 8s ease-in-out infinite;
+}
+
+.circle-2 {
+  width: 400rpx;
+  height: 400rpx;
+  bottom: -100rpx;
+  right: -100rpx;
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+.circle-3 {
+  width: 200rpx;
+  height: 200rpx;
+  top: 40%;
+  left: 20%;
+  background: rgba(255, 255, 255, 0.05);
+  animation: float 12s ease-in-out infinite 2s;
 }
 
 .login-box {
@@ -479,6 +506,12 @@ onMounted(() => {
 
 @keyframes float {
   0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(20rpx, -20rpx); }
+  50% { transform: translate(30rpx, -30rpx); }
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 </style>
