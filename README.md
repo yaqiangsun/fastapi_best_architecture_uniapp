@@ -124,7 +124,7 @@ npm run build:mp-weixin
 
 ## Preview
 
-<img src="images/index_page.png" width="30%" /><img src="images/profile_page.png" width="30%" />
+<img src="images/login.png" width="30%" /><img src="images/index_page.png" width="30%" /><img src="images/profile_page.png" width="30%" />
 
 ## Pages & Features
 
