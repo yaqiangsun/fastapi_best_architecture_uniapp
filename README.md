@@ -64,6 +64,10 @@ npm install --legacy-peer-deps
 ```
 
 ## Configuration
+Copy .env.example to .env
+```bash
+cp .env.example .env
+```
 
 Edit `.env` file to configure your API endpoint:
 
