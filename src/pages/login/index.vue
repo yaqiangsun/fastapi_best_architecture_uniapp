@@ -7,10 +7,10 @@
     </view>
     <view class="login-box" :class="{ 'keyboard-open': isFocused }">
       <view class="logo-section">
-        <text class="app-title">FastAPI Admin</text>
-        <text class="app-subtitle">Mobile Application</text>
-      </view>
-      
+      <text class="app-title">FastAPI Admin</text>
+      <text class="app-subtitle">Mobile Application</text>
+    </view>
+
       <view class="form-section">
         <view class="input-group">
           <input 
@@ -194,8 +194,9 @@ onMounted(() => {
 .login-container {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background: linear-gradient(-45deg, #667eea, #764ba2, #6B8DD6, #8E37D7);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
@@ -260,6 +261,7 @@ onMounted(() => {
   z-index: 1;
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   animation: slideUp 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  margin-top: 240rpx;
   
   &.keyboard-open {
     transform: translateY(-0rpx);
@@ -268,6 +270,7 @@ onMounted(() => {
 
 .logo-section {
   text-align: center;
+  margin-top: 0rpx;
   margin-bottom: 60rpx;
   animation: fadeIn 0.8s ease-out 0.2s backwards;
 }
