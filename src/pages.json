@@ -4,6 +4,7 @@
 			"path": "pages/login/index",
 			"style": {
 				"navigationBarTitleText": "Login",
+				"disableScroll": true,
 				"navigationStyle": "custom"
 			}
 		},
