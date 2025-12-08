@@ -262,7 +262,7 @@ onMounted(() => {
   animation: slideUp 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
   
   &.keyboard-open {
-    transform: translateY(-150rpx);
+    transform: translateY(-0rpx);
   }
 }
 
